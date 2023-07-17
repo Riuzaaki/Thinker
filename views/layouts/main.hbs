@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- //materialize css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {{!-- font awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{!-- it knows it needs to look inside the "public" folder as it is static --}}
+    <link rel="stylesheet" href="/css/style.css"> 
+    {{!--  --}}
+
+    <title>Thinker</title>
+</head>
+
+<body>
+    {{> _header}} 
+    {{!-- importing partial file named _header --}}
+    {{> _add_btn}} 
+    <div class="container">
+        {{{body}}}
+    </div>
+
+    {{!-- materialize css JS script--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    {{!-- bring in CK editor from cdn.js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js"
+        integrity="sha256-bEIQpI72w9NJuIVhTLFUF2/8uxl0u5800r8ddViuv+o=" crossorigin="anonymous"></script>
+
+    <script>
+        M.Sidenav.init(document.querySelector('.sidenav'))
+        //initializing the 3 line side button which has the log out option
+        M.FormSelect.init(document.querySelector('#status'))
+        //with matrialize , u have to intialize it with js so it works properly
+
+        
+        CKEDITOR.replace('body', {
+            plugins: 'wysiwygarea, toolbar, basicstyles, link'
+        })
+        //since we need to replace the text body area with CK editor
+    </script>
+</body>
+
+</html>

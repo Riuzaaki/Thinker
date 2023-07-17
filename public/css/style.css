@@ -1,0 +1,28 @@
+/* for all paragraphs */
+p{
+    margin: 10px 0 !important; 
+    /* use !important to over ride any other css rules by materialize css */
+}
+
+/* the login card */
+.login-container {
+
+    width: 400px;
+    margin-top: 50px;
+    text-align: center;
+
+}
+
+/* to reduce the size of edit icon */
+.fa-small {
+    font-size: 16px
+}
+
+.btn-float {
+    float: left;
+    margin-right: 10px;
+}
+
+.img-small{
+    width: 180px;
+}

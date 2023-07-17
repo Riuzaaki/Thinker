@@ -1,0 +1,51 @@
+{{!-- for our PUBLIC stories --}}
+
+<h1>Stories</h1>
+<ul class="search-form">
+    <li>    
+        <form id="search-site"  action='/stories/search/:query' method='get'>
+            <div class="input-group">
+                    <i class="fas fa-search fa-large" ></i>
+                    <div class="input-field">
+                    <input id="search" type="search" name='query' placeholder="Search by title">
+                    <label class="label-icon" for="search">
+                    </label>
+                 </div>
+                <button type="submit" class="input-group-addon btn">search</button>
+            </div>
+
+        </form>  
+    </li>   
+</ul>
+<div class="row">
+    {{!-- we use 'each' since we basically want to loop thr the stories --}}
+    {{#each stories}}
+    {{!-- inside 'each' we are styling cards which store the title , user data and a portion of the body --}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {{!-- shows icon of the logged in user --}}
+                {{{editIcon user ../user _id}}}
+            </div>
+            <div class="card-content center-align">
+                <h5>{{title}}</h5>
+                <p>{{stripTags (truncate body 150)}}</p>
+                {{!-- strip the tags and truncate at length 150 --}}
+                <br>
+                <div class="chip">
+                    {{!-- in materialize class chip has a bg color and rounded edges --}}
+                    <img src="{{user.image}}" alt="">
+                    <a href="/stories/user/{{user._id}}">{{user.displayName}}</a>
+                    {{!-- this route is going to show all the stories of a specific user and their display name --}}
+                </div>
+            </div>
+            <div class="card-action center-align">
+                <a href="/stories/{{_id}}" class="btn grey">Read More</a>
+                {{!-- action button ->Read more , takes the reader to the full story by using the storie's id --}}
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>No stories to display</p>
+    {{/each}}
+</div>
